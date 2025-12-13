@@ -122,6 +122,11 @@ fun Onboarding() {
                                 text = "First Name"
                             )
                         },
+                        placeholder = {
+                            Text(
+                                text = "Tilly"
+                            )
+                        },
                         maxLines = 1,
                         modifier = Modifier.fillMaxWidth()
 
@@ -134,6 +139,11 @@ fun Onboarding() {
                         label = {
                             Text(
                                 text = "Last Name"
+                            )
+                        },
+                        placeholder = {
+                            Text(
+                                text = "Jhons"
                             )
                         },
                         maxLines = 1,
@@ -149,6 +159,11 @@ fun Onboarding() {
                         label = {
                             Text(
                                 text = "Email"
+                            )
+                        },
+                        placeholder = {
+                            Text(
+                                text = "tillyjohns@gmail.com"
                             )
                         },
                         maxLines = 1,
