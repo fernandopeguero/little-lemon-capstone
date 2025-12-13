@@ -17,6 +17,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -128,6 +129,11 @@ fun Onboarding() {
                             )
                         },
                         maxLines = 1,
+                        colors = TextFieldDefaults.colors(
+                            focusedContainerColor = Color.White, // Color when focused
+                            unfocusedContainerColor = Color.LightGray, // Color when unfocused
+                            disabledContainerColor = Color.Gray, // Color when disabled
+                        ) ,
                         modifier = Modifier.fillMaxWidth()
 
                     )
@@ -147,6 +153,11 @@ fun Onboarding() {
                             )
                         },
                         maxLines = 1,
+                        colors = TextFieldDefaults.colors(
+                            focusedContainerColor = Color.White, // Color when focused
+                            unfocusedContainerColor = Color.LightGray, // Color when unfocused
+                            disabledContainerColor = Color.Gray, // Color when disabled
+                        ) ,
                         modifier = Modifier.fillMaxWidth().padding(top = 28.dp)
 
                     )
@@ -167,6 +178,11 @@ fun Onboarding() {
                             )
                         },
                         maxLines = 1,
+                        colors = TextFieldDefaults.colors(
+                            focusedContainerColor = Color.White, // Color when focused
+                            unfocusedContainerColor = Color.LightGray, // Color when unfocused
+                            disabledContainerColor = Color.Gray, // Color when disabled
+                        ) ,
                         modifier = Modifier.fillMaxWidth().padding(top = 28.dp)
 
                     )
