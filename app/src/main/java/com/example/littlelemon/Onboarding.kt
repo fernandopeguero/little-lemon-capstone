@@ -51,6 +51,7 @@ fun Onboarding() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(100.dp) // fixed height
+                    .padding(top = 16.dp)
             ) {
                 Image(
                     painter = painterResource(R.drawable.logo),
