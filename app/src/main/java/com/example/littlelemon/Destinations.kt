@@ -8,11 +8,11 @@ sealed interface Destinations {
     }
 
     object Profile : Destinations {
-        override val route = "Home"
+        override val route = "Profile"
     }
 
-    object Settings : Destinations {
-        override val route = "Home"
+    object Onboarding : Destinations {
+        override val route = "Onboarding"
     }
 }
 
