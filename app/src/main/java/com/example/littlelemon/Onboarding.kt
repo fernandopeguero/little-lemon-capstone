@@ -38,7 +38,7 @@ import com.example.littlelemon.ui.theme.LittleLemonTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Onboarding() {
+fun Onboarding(navigate: () -> Unit,modifier: Modifier) {
 
     var firstName by remember { mutableStateOf("") }
     var lastName by remember { mutableStateOf("") }
@@ -193,7 +193,9 @@ fun Onboarding() {
                 }
 
             Button(
-                onClick = {},
+                onClick = {
+                    navigate()
+                },
                 shape = RoundedCornerShape(10.dp),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = colorResource(R.color.primary_yellow)
@@ -223,7 +225,7 @@ fun Onboarding() {
 fun OnboardingPreview() {
 
     LittleLemonTheme {
-        Onboarding()
+        Onboarding({}, modifier = Modifier)
     }
 
 }
