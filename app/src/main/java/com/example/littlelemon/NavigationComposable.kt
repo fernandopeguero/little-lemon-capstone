@@ -39,12 +39,15 @@ fun Navigation(modifier: Modifier){
         }
 
         composable(route = Destinations.Home.route) {
-            Home(modifier = Modifier)
+            Home({
+                navController.navigate(Destinations.Profile.route)
+            },modifier = Modifier)
         }
 
         composable(route = Destinations.Profile.route){
-
-            Profile(modifier = Modifier)
+            Profile( {
+                navController.navigate(Destinations.Onboarding.route)
+            }, modifier = Modifier)
         }
 
     }
