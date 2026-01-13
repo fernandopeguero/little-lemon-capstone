@@ -19,14 +19,11 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -34,15 +31,24 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.littlelemon.data.UserPreferences
 import com.example.littlelemon.ui.theme.LittleLemonTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Onboarding(navigate: () -> Unit,modifier: Modifier) {
+fun Onboarding(
+    firstName: String,
+    setFirstName: (String) -> Unit,
+    lastName: String,
+    setLastName: (String) -> Unit,
+    email: String,
+    setEmail: (String) -> Unit,
+    navigate: () -> Unit,
+    modifier: Modifier) {
 
-    var firstName by remember { mutableStateOf("") }
-    var lastName by remember { mutableStateOf("") }
-    var email by remember { mutableStateOf("") }
+
+
+    val context = LocalContext.current
 
     Scaffold(
         topBar = {
@@ -116,9 +122,7 @@ fun Onboarding(navigate: () -> Unit,modifier: Modifier) {
 
                     TextField(
                         value = firstName,
-                        onValueChange = {
-                            firstName = it
-                        },
+                        onValueChange = setFirstName,
                         label = {
                             Text(
                                 text = "First Name"
@@ -140,9 +144,7 @@ fun Onboarding(navigate: () -> Unit,modifier: Modifier) {
                     )
                     TextField(
                         value = lastName,
-                        onValueChange = {
-                            lastName = it
-                        },
+                        onValueChange = setLastName,
                         label = {
                             Text(
                                 text = "Last Name"
@@ -165,9 +167,7 @@ fun Onboarding(navigate: () -> Unit,modifier: Modifier) {
 
                     TextField(
                         value = email,
-                        onValueChange = {
-                            email = it
-                        },
+                        onValueChange = setEmail,
                         label = {
                             Text(
                                 text = "Email"
@@ -194,6 +194,9 @@ fun Onboarding(navigate: () -> Unit,modifier: Modifier) {
 
             Button(
                 onClick = {
+                    if (firstName.isBlank() || lastName.isBlank() || email.isBlank()) return@Button
+                    val userConfig = UserPreferences(context)
+
                     navigate()
                 },
                 shape = RoundedCornerShape(10.dp),
@@ -225,7 +228,7 @@ fun Onboarding(navigate: () -> Unit,modifier: Modifier) {
 fun OnboardingPreview() {
 
     LittleLemonTheme {
-        Onboarding({}, modifier = Modifier)
+        Onboarding("None", {}, "", {}, "", {}, {}, modifier = Modifier)
     }
 
 }
